@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Excel Search</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1>Cari Data di Excel</h1>
+  <form action="/search" method="POST">
+    <label for="creator">Pencipta:</label>
+    <input type="text" name="creator" id="creator" placeholder="Masukkan nama pencipta">
+
+    <label for="title">Judul:</label>
+    <input type="text" name="title" id="title" placeholder="Masukkan judul">
+
+    <label for="year">Tahun:</label>
+    <input type="text" name="year" id="year" placeholder="Masukkan tahun">
+
+    <button type="submit">Cari</button>
+  </form>
+
+  <% if (results) { %>
+    <h2>Hasil Pencarian:</h2>
+
+    <% if (results.length > 0) { %>
+      <table>
+        <thead>
+          <tr>
+            <th>Pencipta</th>
+            <th>Judul</th>
+            <th>Tahun</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% results.forEach((row) => { %>
+            <tr>
+              <td><%= row[10] %></td> <!-- Pencipta -->
+              <td><%= row[3] %></td>  <!-- Judul -->
+              <td><%= row[6] %></td>  <!-- Tahun -->
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } else { %>
+      <p>Tidak ada hasil yang ditemukan.</p>
+    <% } %>
+  <% } %>
+</body>
+</html>
