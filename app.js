@@ -58,15 +58,21 @@ app.post('/search', (req, res) => {
   const filePath = path.join(__dirname, 'uploads', 'db.xlsx'); // Path ke file db.xlsx
 
   const data = readExcelData(filePath);
+  // Log data yang dibaca dari Excel
+  console.log('Data dari Excel:', data);
+
 
   // Filter data berdasarkan input pencarian
   const results = data.filter((row) => {
-    const matchCreator = creator ? row[10] && row[10].toLowerCase().includes(creator.toLowerCase()) : true;
-    const matchTitle = title ? row[3] && row[3].toLowerCase().includes(title.toLowerCase()) : true;
-    const matchYear = year ? row[6] && row[6].toString() === year : true;
+    const matchCreator = creator ? row[8] && row[8].toLowerCase().includes(creator.toLowerCase()) : true; // Kolom I
+    const matchTitle = title ? row[2] && row[2].toLowerCase().includes(title.toLowerCase()) : true; // Kolom C
+    const matchYear = year ? row[3] && row[3].toString().includes(year.toLowerCase()) : true; // Kolom D
     return matchCreator && matchTitle && matchYear;
   });
 
+  // Log hasil pencarian
+  console.log('Hasil pencarian:', results);
+  
   res.render('index', { results });
 });
 
