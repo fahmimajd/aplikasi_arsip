@@ -8,7 +8,7 @@
 </head>
 <body>
   <h1>Cari Data di Excel</h1>
-  <form action="/search" method="POST">
+  <form action="/search" method="POST" class="pure-steps">
     <label for="creator">Pencipta:</label>
     <input type="text" name="creator" id="creator" placeholder="Masukkan nama pencipta">
 
@@ -18,7 +18,7 @@
     <label for="year">Tahun:</label>
     <input type="text" name="year" id="year" placeholder="Masukkan tahun">
 
-    <button type="submit">Cari</button>
+    <button type="submit" class="pure-steps_group-step_legend">Cari</button>
   </form>
 
   <% if (results) { %>
@@ -28,17 +28,31 @@
       <table>
         <thead>
           <tr>
-            <th>Pencipta</th>
-            <th>Judul</th>
-            <th>Tahun</th>
+            <th>NO</th>
+            <th>Deskripsi</th>
+            <th>Kurun Waktu</th>
+            <th>Ruangan</th>
+            <th>Rak</th>
+            <th>Box</th>
+            <th>Kondisi</th>
+            <th>Pencipta Arsip</th>
+            <th>Kode Daftar SIKD</th>
+
+            
           </tr>
         </thead>
         <tbody>
           <% results.forEach((row) => { %>
             <tr>
-              <td><%= row[8] %></td> <!-- Pencipta, Kolom I -->
-              <td><%= row[2] %></td> <!-- Judul, Kolom C -->
-              <td><%= row[3] %></td> <!-- Tahun, Kolom D -->
+              <td><%= row[1] %></td> 
+              <td><%= row[2] %></td> 
+              <td><%= row[3] %></td> 
+              <td><%= row[4] %></td> 
+              <td><%= row[5] %></td> 
+              <td><%= row[6] %></td> 
+              <td><%= row[7] %></td> 
+              <td><%= row[8] %></td> 
+              <td><%= row[9] %></td> 
             </tr>
           <% }) %>
         </tbody>
