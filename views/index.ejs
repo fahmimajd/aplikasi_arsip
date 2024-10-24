@@ -9,12 +9,13 @@
 </head>
 <body>
   <h1>CAMERAMEN</h1>
-  <h1>CEPAT MENCARI ARSIP KEBUMEN</h1>
+  <h2>CEPAT MENCARI ARSIP KEBUMEN</h2>
   <form action="/search" method="POST">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
     <label for="creator">Pencipta:</label>
     <input type="text" name="creator" id="creator" placeholder="Masukkan nama pencipta">
 
-    <label for="title">Judul:</label>
+    <label for="title">Deskripsi:</label>
     <input type="text" name="title" id="title" placeholder="Masukkan judul">
 
     <label for="year">Tahun:</label>
